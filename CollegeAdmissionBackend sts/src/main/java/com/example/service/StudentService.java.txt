@@ -1,0 +1,63 @@
+package com.example.demo.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Repository.StudentRepository;
+import com.example.demo.entity.Student;
+
+
+@Service
+public class StudentService {
+	@Autowired
+	private StudentRepository studentRepository;
+	
+	public Student create(Student s)
+	{
+		return studentRepository.save(s);
+	}
+	
+	public Student update(Student s)
+	{
+		return studentRepository.save(s);	
+	}
+	public void delete(int id)
+	{
+		studentRepository.deleteById(id);
+	}
+	
+	public Optional<Student> get(int id) {
+		Optional<Student> r=studentRepository.findById(id);
+		return r;
+	}
+	
+	public List<Student> findAll(String fieldname, int page_no) {
+		// TODO Auto-generated method stub
+		Pageable page= PageRequest.of(page_no, 5,Sort.by(fieldname));//5 products in page 1
+		Page<Student>o= studentRepository.findAll(page);
+		return  o.getContent();
+	}
+	
+	//page alone
+	public List<Student> findAllStu(int page_no) {
+		// TODO Auto-generated method stub
+		Pageable page= PageRequest.of(page_no, 5);//5 products in page 1
+		Page<Student>o= studentRepository.findAll(page);
+		return  o.getContent();
+	}
+	
+	//sort alone
+	public Iterable<Student>sorting(String fieldname)
+	{
+		return studentRepository.findAll(Sort.by(fieldname).descending());
+	}
+
+
+}

@@ -1,0 +1,103 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Student;
+import com.example.demo.service.StudentService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+@RestController
+@CrossOrigin
+public class StudentController {
+	@Autowired
+	private StudentService studentService;
+	@Operation(summary="creates a new Student")
+	@ApiResponses(value={@ApiResponse(responseCode="201",description="Student created successfully"),
+			@ApiResponse(responseCode="400",description="Student is Invalid")})
+	@ResponseStatus(HttpStatus.CREATED)
+	@PostMapping(produces="application/json", consumes="application/json", value="/save")
+	public ResponseEntity<Student> create(@RequestBody Student s)
+	{
+		Student s1=studentService.create(s);
+		return ResponseEntity.ok(s1);
+	}
+	@Operation(summary="Gets a Student with given id")
+	@ApiResponses(value= {@ApiResponse(responseCode="200",description="Getting Student Successfully"),
+			@ApiResponse(responseCode="401",description="Invalid credentials"),
+			@ApiResponse(responseCode="404",description="Student not found")})
+	@GetMapping(value= "/{id}" , produces="application/json")
+	public ResponseEntity<Optional<Student>> read(final @PathVariable int id)
+	{
+		Optional<Student> createdStudent=studentService.get(id);
+		return ResponseEntity.ok(createdStudent);
+	}
+	
+	@Operation(summary="Update the Student with given id")
+	@ApiResponses(value= {@ApiResponse(responseCode="200",description="Student updated Successfully"),
+			@ApiResponse(responseCode="400",description="Student is invalid"),
+			@ApiResponse(responseCode="401",description="Invalid credentials"),
+			@ApiResponse(responseCode="404",description="Student not found")})
+	@PutMapping(value= "/update" , produces="application/json", consumes="application/json")
+	
+		public ResponseEntity<Student> update(final@RequestBody Student s)
+				throws JsonProcessingException
+		{
+			final Student updatedStudent=studentService.update(s);
+			return ResponseEntity.ok(updatedStudent);
+		}
+	
+	
+	@Operation(summary="delete the Student with given id")
+	@ApiResponses(value= {@ApiResponse(responseCode="200",description="Student deleted Successfully"),
+			@ApiResponse(responseCode="401",description="Invalid credentials"),
+			@ApiResponse(responseCode="404",description="Student not found")})
+	@DeleteMapping(value= "/{id}")
+	
+	public void delete(@PathVariable int id)
+	{
+		studentService.delete(id);
+	}
+	@Operation(summary="Gives the page requested")
+	@GetMapping("/page/{page_no}")
+	public List<Student> fun(@PathVariable int page_no)
+	{
+		return studentService.findAllStu(page_no);
+		
+	}
+	@Operation(summary="Sorts and provides the page requested")
+	@GetMapping("/sortpage/{fieldname}/{page_no}")
+	public List<Student> all(@PathVariable String fieldname,@PathVariable int page_no)
+	{
+		return studentService.findAll(fieldname,page_no);
+		
+	}
+	
+	@Operation(summary="Sorts the field provided")
+	@GetMapping("/sort/{fieldname}")
+	public Iterable<Student>fun3(@PathVariable String fieldname)
+	{
+		return studentService.sorting(fieldname);
+	}
+
+
+
+}

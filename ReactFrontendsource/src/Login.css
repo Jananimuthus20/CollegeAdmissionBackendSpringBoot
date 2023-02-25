@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+.e {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh ;
+  background-image: url('loginbg.jpeg');
+  overflow-x: hidden;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+
+}
+
+.container1 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.btn {
+  cursor: pointer;
+  background-color: transparent;
+ /* height: 30px;
+  width: 100px;
+  box-shadow: 0 3px 3px rgba(63, 61, 61, 0.6);
+}*/
+
+.formContainer1 {
+  position: relative;
+  height: 510px;
+  width: 400px;
+}
+
+.form {
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform-origin: bottom;
+}
+.form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form .formIcon {
+  display: inline-flex;
+  height: 6rem;
+  width: 6rem;
+  font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 500px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  color: #f36071;
+}
+.form .formHeading {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #121111;
+}
+.form .formHeading .mainHeading {
+  font-size: 1.8rem;
+}
+.form .formHeading .subHeading {
+  font-size: 0.9rem;
+}
+.form .formBody {
+  padding: 1rem 2rem;
+}
+.form .formBody .inputGroup {
+  padding: 0.2rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  position: relative;
+  color: #131212;
+}
+.form .formBody .inputGroup input {
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid #0e0e0e;
+  padding-left: 1rem;
+  font-size: 1rem;
+  color: #333333;
+  width: 15rem;
+  background-color: transparent;
+}
+.form .formBody .inputGroup input::placeholder {
+  color: inherit;
+}
+.form .formBody .inputGroup i.fa {
+  bottom: 0;
+  top: 0;
+  height: 1rem;
+  width: 0;
+  margin: auto;
+  position: absolute;
+  font-size: 1rem;
+}
+.form .formBody .formGroup {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto 0;
+  align-items: center;
+}
+.form .formBody .formGroup a {
+  text-decoration: none;
+  color: #999999;
+  font-size: 0.8rem;
+}
+.form .formBody .formGroup a:hover {
+  color: #333333;
+}
+.form .formBody .formGroup button {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 0px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: #f36071;
+  color: #ffffff;
+  text-transform: uppercase;
+  outline: 0;
+}
+.form .formBody .formGroup button:hover {
+  background-color: #ef3147;
+}
+.form .formFooter {
+  display: flex;
+  justify-content: space-around;
+  flex-basis: 100%;
+  width: 100%;
+  margin: 1rem auto;
+  color: #114a75;
+}
+.form .formFooter a {
+  color: #3853cd;
+  text-decoration: none;
+}
+.form .formFooter a:hover {
+  color: #111213;
+}
+
+/*******/
+.formContainer1 .signupForm {
+  background-color: #80d6df;
+  color: #fff !important;
+}
+.formContainer1 .signupForm.active {
+  animation: signupActive 1.5s ease forwards;
+}
+.formContainer1 .signupForm .formIcon,
+.formContainer1 .signupForm .formHeading,
+.formContainer1 .signupForm .inputGroup,
+.formContainer1 .signupForm input,
+.formContainer1 .signupForm a {
+  color: #ffffff !important;
+}
+.formContainer1 .signupForm button {
+  background-color: #ffffff !important;
+  color: #f36071 !important;
+  cursor: pointer;
+}
+.formContainer1 .signupForm button:hover {
+  background-color: whitesmoke !important;
+}
+.formContainer1 .signinForm {
+  position: absolute;
+}
+.formContainer1 .signinForm.active {
+  animation: signinActive 1.5s ease forwards;
+}
+
+@keyframes signupActive {
+  0%, 100% {
+    transform: translate(0%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-100%) rotate(-10deg);
+  }
+  100% {
+    z-index: 1;
+  }
+}
+@keyframes signinActive {
+  0%, 100% {
+    transform: translate(0%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(100%) rotate(10deg);
+  }
+  100% {
+    z-index: 1;
+  }
+}
+.msg {
+  position: absolute;
+  bottom: 0;
+  font-size: 2rem;
+}

@@ -1,0 +1,37 @@
+package com.example.demo.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.Repository.UserRepository;
+import com.example.demo.entity.User;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
+	
+	public User create(User s)
+	{
+		return userRepository.save(s);
+	}
+	
+	public User update(User s)
+	{
+		return userRepository.save(s);	
+	}
+	
+	public Optional<User> get(int id) {
+		Optional<User> r=userRepository.findById(id);
+		return r;
+	}
+
+	public void deleteuser(int id) {
+		// TODO Auto-generated method stub
+		userRepository.deleteById(id);
+		
+	}
+
+}

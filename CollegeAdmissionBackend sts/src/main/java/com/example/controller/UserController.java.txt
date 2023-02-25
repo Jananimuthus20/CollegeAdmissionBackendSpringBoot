@@ -1,0 +1,62 @@
+package com.example.demo.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
+@RestController
+@CrossOrigin
+public class UserController {
+	@Autowired
+	private UserService userService;
+	@PostMapping(value="/saveuser")
+	public ResponseEntity<User> create(@RequestBody User s)
+	{
+		User s1=userService.create(s);
+		return ResponseEntity.ok(s1);
+	}
+	
+	@GetMapping(value= "/getuser/{id}")
+	public ResponseEntity<Optional<User>> read(final @PathVariable int id)
+	{
+		Optional<User> createdUser=userService.get(id);
+		return ResponseEntity.ok(createdUser);
+	}
+	
+	
+	@PutMapping(value= "/updateuser")
+	
+		public ResponseEntity<User> update(final@RequestBody User s)
+				throws JsonProcessingException
+		{
+			final User updatedUser=userService.update(s);
+			return ResponseEntity.ok(updatedUser);
+		}
+	
+	
+	
+	@DeleteMapping(value= "/deleteuser/{id}")
+	
+	public void delete1(@PathVariable int id)
+	{
+		userService.deleteuser(id);
+	}
+	
+
+}

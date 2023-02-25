@@ -1,0 +1,91 @@
+.App {
+    text-align: center;
+  }
+  .whole{
+    /*background: url('https://forms.office.com/cdn/images/theme/office-stationery2.png');*/
+    /*background: url('https://lh4.googleusercontent.com/proxy/-itx6GhJeX1K_LBiOl1ef1OnbiDMFVuc8bIGfj25OQ5PDtSMAgR8hRdUBiU5EIOWWHYNGtnGWQ31TVh9o8OjI3SWTmCaYqSRQih6ch0TgS4=w3840-h2160-p-k-no-nd-mv');*/
+  /* background: url('https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');*/
+   
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh ;
+  background-image: url('bgimage.jpg');
+  overflow-x: hidden;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+    
+  }
+  .open img{
+   
+    height: 250px;
+    width:350px;
+    position: absolute;
+    top:35%;
+    left:15%;
+  }
+  .container{
+    max-width: 300px;
+    width: 100%;
+    background-color: #edeaea;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(85, 186, 193, 0.6);
+    height:380px;
+    position: absolute;
+    top:20%;
+    right:15%;
+    left:35%;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    flex-direction:column;
+  }
+  h2{
+    font-size:xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  @media(max-width:1300px){
+    .whole{
+      background-repeat:repeat-y;
+    }
+  }
+  @media(max-width:550px){
+    .whole{
+      background-repeat:repeat;
+
+    }
+    .container{
+      position: absolute;
+      left:10%;
+    }
+  }
+  @media(max-width:400px){
+    .whole{
+      background-repeat:repeat;
+      background-size: cover;
+      height: 100%; 
+     min-width: 100vh;
+     min-height: 100vh;
+    }
+    .container{
+      position: absolute;
+      left:10%;
+    }
+  }
+
+  @media(max-width:250px){
+    .whole{
+      background-repeat:repeat;
+      width:100%;
+      height: 100%;  
+    }
+    .container{
+      position: absolute;
+      left:10%;
+    }
+  }
+  
+  
